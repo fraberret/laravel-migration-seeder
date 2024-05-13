@@ -3,12 +3,13 @@
 @section('content')
     <div class="container">
         <h2>Treni in partenza</h2>
-        <div class="row g-4">
+        <p><strong>Data di oggi: </strong>{{ $today }}</p>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
             @foreach ($trains as $train)
-                <div class="col-3">
+                <div class=2col-3">
                     <a class="link-offset-2 link-underline link-underline-opacity-0"
                         href="{{ route('guests.show', $train) }}">
-                        <div class="card">
+                        <div class=" card">
                             <div class="card-body">
                                 <h3 class="card-title">{{ $train['Stazione_di_partenza'] }} -
                                     {{ $train['Stazione_di_arrivo'] }}</h3>

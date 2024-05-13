@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Guest;
 use App\Http\Controllers\Controller;
 use App\Models\Train;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Date;
 
 
 class TrainController extends Controller
@@ -15,12 +16,13 @@ class TrainController extends Controller
     public function index()
     {
 
+        $today = Date::now()->toDateString();
 
-        $trains = Train::whereDate('date', '2024-05-13')
-            ->orderByDesc('id')
+        $trains = Train::whereDate('date',  $today)
+            ->orderBy('Orario_di_partenza')
             ->get();
 
-        return view('guests.index', compact('trains'));
+        return view('guests.index', compact('trains', 'today'));
     }
 
 
