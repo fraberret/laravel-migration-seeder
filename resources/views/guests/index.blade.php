@@ -2,15 +2,32 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
+        <h2>Treni in partenza</h2>
+        <div class="row g-4">
             @foreach ($trains as $train)
-                <a href="{{ route('guests.show', $train) }}">
-                    <div class="col">
+                <div class="col-3">
+                    <a class="link-offset-2 link-underline link-underline-opacity-0"
+                        href="{{ route('guests.show', $train) }}">
                         <div class="card">
-                            <h3>{{ $train['Azienda'] }}</h3>
+                            <div class="card-body">
+                                <h3 class="card-title">{{ $train['Stazione_di_partenza'] }} -
+                                    {{ $train['Stazione_di_arrivo'] }}</h3>
+
+                                <p><strong>Azienda:</strong> {{ $train['Azienda'] }}</p>
+                                <h4>Partenza</h4>
+                                <p class="m-0"><strong>Data Partenza:</strong> {{ $train['date'] }}</p>
+                                <p class="m-0"><strong>Stazione di partenza:</strong> {{ $train['Stazione_di_partenza'] }}
+                                </p>
+                                <p><strong>Orario di partenza:</strong> {{ $train['Orario_di_partenza'] }}</p>
+                                <h4>Arrivo</h4>
+                                <p class="m-0"><strong>Stazione di Arrivo:</strong> {{ $train['Stazione_di_arrivo'] }}
+                                </p>
+                                <p><strong>Orario di Arrivo:</strong> {{ $train['Orario_di_arrivo'] }}</p>
+
+                            </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
             @endforeach
         </div>
     </div>

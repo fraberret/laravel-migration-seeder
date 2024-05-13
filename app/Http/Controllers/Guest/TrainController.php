@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Train;
 use Illuminate\Http\Request;
 
+
 class TrainController extends Controller
 {
     /**
@@ -13,8 +14,12 @@ class TrainController extends Controller
      */
     public function index()
     {
-        /* dd(Train::all()); */
-        $trains = Train::orderByDesc('id')->get();
+
+
+        $trains = Train::whereDate('date', '2024-05-13')
+            ->orderByDesc('id')
+            ->get();
+
         return view('guests.index', compact('trains'));
     }
 
